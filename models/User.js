@@ -1,11 +1,19 @@
 /* eslint-disable linebreak-style */
-const mongodb = require('mongodb');
-
-console.log(mongodb);
-
-const { mongoURI } = require('../config/keys');
-
-// console.log(Schema);
-
 // Create Schema
-// const UserSchema = 
+class User {
+  constructor(
+    name = 'unkown name',
+    email = 'unspecified email',
+    password = 'unknown password',
+    avatar = 'unspecified avatar',
+    date = Date.now,
+  ) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.avatar = avatar;
+    this.date = date;
+  }
+}
+
+module.exports = User;

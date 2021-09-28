@@ -6,7 +6,7 @@ const request = require('supertest');
 
 const app = require('../server');
 
-const mongoURI = require('../config/keys');
+const { mongoURI } = require('../config/keys');
 
 describe('GET Endpoints of posts', () => {
   it('should acknowledge a get request', async () => {
@@ -32,20 +32,31 @@ describe('Test mongodb to see if it works.', () => {
     db = await connection.db('test');
 
     userDB = db.collection('users');
+
+    await userDB.deleteMany();
   });
 
   afterAll(async () => {
     await connection.close();
-
-    await db.close();
   });
 
   it('Should insert a user into the database.', async () => {
-    const newUser = { name: 'Paul Ogwulumba', age: 25 };
-    await userDB.insertOne({ _id: 'test_user', name: newUser.name, age: newUser.age });
+    const newUser = { _id: 'test_user_2', name: 'Pius Odili', age: 19 };
+    await userDB.insertOne(newUser);
 
-    const checkUser = await userDB.findOne({ _id: 'test_user' });
+    const checkUser = await userDB.findOne({ _id: 'test_user_2' });
 
     expect(newUser).toEqual(checkUser);
+  });
+
+  it('Should delete a user from the database.', async () => {
+    const newUser = { _id: 'test_user_3', name: 'Philibus Dogwai', age: 22 };
+    await userDB.insertOne(newUser);
+
+    await userDB.deleteOne({ _id: 'test_user_3' });
+
+    const checkUser = await userDB.findOne({ _id: 'test_user_3' });
+
+    expect(checkUser).toBeNull();
   });
 });

@@ -10,4 +10,13 @@ router.get('/test', (request, response) => {
   response.json({ msg: 'Users works' });
 });
 
+// @route GET /api/user/register
+// @desc Registers a new user by adding their details to the database
+// @access Public
+router.post('/register', (request, response) => {
+
+});
+
+// function validateData()
+
 module.exports = router;

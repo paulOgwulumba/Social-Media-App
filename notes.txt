@@ -4,3 +4,8 @@ Schema for User model
 3. Password
 4. Avatar
 5. Date
+
+order of actions for registering new User
+1. receive post request
+2. extract new user information from body of request
+3. make sure email is in correct format

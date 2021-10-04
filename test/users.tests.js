@@ -9,7 +9,9 @@ const app = require('../server');
 
 const { MongoURI } = require('../config/keys');
 
-describe('Successfully registers new user and succesfully does so.', async () => {
+const { validateData } = require('../routes/api/users');
+
+describe('Successfully registers new user into database.', async () => {
   let connection;
   let db;
   let userDB;

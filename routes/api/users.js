@@ -17,6 +17,11 @@ router.post('/register', (request, response) => {
 
 });
 
-// function validateData()
+/**
+ * @description Checks the validation status of user data to be added to the database.
+ * @param userData object containing information about the new user.
+ * @returns object containing a message and the status of the user data.
+ */
+function validateData() {}
 
-module.exports = router;
+module.exports = { router, validateData };

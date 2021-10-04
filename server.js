@@ -6,7 +6,7 @@ const { MongoClient } = require('mongodb');
 const app = express();
 
 // Import routes
-const users = require('./routes/api/users');
+const users = require('./routes/api/users').router;
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 

@@ -8,7 +8,6 @@ const router = express.Router();
 // @access  Public
 router.get('/test', (request, response) => {
   const x = request.body;
-  console.log(x);
   response.json({ message: 'Posts api works properly' });
 });
 

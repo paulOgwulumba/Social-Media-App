@@ -4,11 +4,19 @@ const { MongoClient } = require('mongodb');
 
 const request = require('supertest');
 
-const app = require('../server');
+const Server = require('../utils/app');
 
 const { mongoURI } = require('../config/keys');
 
+const server = new Server();
+
+const { app } = server;
+
 describe('GET Endpoints of posts', () => {
+  beforeAll(async () => {
+    server.listen();
+  });
+
   it('should acknowledge a get request', async () => {
     const response = await request(app).get('/api/posts/test');
     expect(response.statusCode).toEqual(200);
@@ -17,6 +25,10 @@ describe('GET Endpoints of posts', () => {
   it('should read message carried in request body', async () => {
     const response = await request(app).get('/api/posts/test');
     expect(response.body).toHaveProperty('message');
+  });
+
+  afterAll(async () => {
+    server.close();
   });
 });
 

@@ -14,7 +14,7 @@ router.get('/test', (request, response) => {
 // @desc Registers a new user by adding their details to the database
 // @access Public
 router.post('/register', (request, response) => {
-
+  response.status(200).json({ msg: 'Received successfully' });
 });
 
 /**
